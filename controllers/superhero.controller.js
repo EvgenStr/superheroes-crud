@@ -1,15 +1,9 @@
-const {
-  Superhero,
-  Image,
-  Superpower,
-  Sequelize,
-  sequelize,
-} = require('../models');
-const { Op } = require('sequelize');
-const queryInterface = sequelize.getQueryInterface();
+const path = require('path');
 const createError = require('http-errors');
 const fs = require('fs');
-const path = require('path');
+const { Superhero, Image, Superpower, sequelize } = require('../models');
+const { Op } = require('sequelize');
+const queryInterface = sequelize.getQueryInterface();
 const { STATIC_PATH } = require('../config/config');
 
 /* CREATE */
@@ -54,7 +48,9 @@ module.exports.createSuperhero = async (req, res, next) => {
     }
 
     res.status(201).send({
-      data: { createdHero, images, powersArr },
+      createdHero,
+      images,
+      powersArr,
     });
   } catch (err) {
     next(err);

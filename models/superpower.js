@@ -16,8 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Superpower.init(
     {
-      superpower: {
-        field: 'superpower',
+      name: {
         allowNull: false,
         type: DataTypes.STRING(64),
         validate: {
